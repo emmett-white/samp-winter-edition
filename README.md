@@ -1,3 +1,5 @@
+[![Build Status](https://app.travis-ci.com/emmett-white/samp-winter-edition.svg?branch=main)](https://app.travis-ci.com/emmett-white/samp-winter-edition)
+
 # samp-winter-edition
 
 [![sampctl](https://img.shields.io/badge/sampctl-samp--winter--edition-2f2f2f.svg?style=for-the-badge)](https://github.com/emmett-white/samp-winter-edition)
