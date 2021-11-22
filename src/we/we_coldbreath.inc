@@ -37,7 +37,7 @@ stock Winter_SetColdBreathStatus(const playerid, bool: status = true)
 {
     if (!status)
     {
-        RemovePlayerAttachedObject(playerid, 4);
+        RemovePlayerAttachedObject(playerid, WINTER_COLD_BREATH_OBJ_INDEX);
         __g_coldBreathStatus[playerid] = false;
 
         KillTimer(__g_coldBreathTimer[playerid]);
