@@ -1945,8 +1945,8 @@ public OnGameModeInit()
     __g_snowObj[index] = Winter_CreateSnowObject(5624, 2136.72656, -975.82813, 58.10937, 0.00000, 0.00000, 345.00500, -1, -1, -1, 300.00, 300.00);
     index++;
 
-    #if defined __OnGameModeInit
-		return __OnGameModeInit();
+    #if defined __WE_OnGameModeInit
+		return __WE_OnGameModeInit();
 	#else
 		return 1;
 	#endif
@@ -1958,7 +1958,7 @@ public OnGameModeInit()
 	#define _ALS_OnGameModeInit
 #endif
 
-#define OnGameModeInit __OnGameModeInit
-#if defined __OnGameModeInit
-	forward __OnGameModeInit();
+#define OnGameModeInit __WE_OnGameModeInit
+#if defined __WE_OnGameModeInit
+	forward __WE_OnGameModeInit();
 #endif

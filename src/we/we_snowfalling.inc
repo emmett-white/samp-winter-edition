@@ -12,7 +12,7 @@ static
     __g_snowObject[MAX_PLAYERS],
     __g_snowFallingTimer[MAX_PLAYERS],
 
-    bool: __g_snowObjectCreated,
+    bool: __g_snowObjectCreated[MAX_PLAYERS],
     bool: __g_snowFallingStatus[MAX_PLAYERS];
 
 /**
@@ -45,7 +45,7 @@ stock Winter_SetSnowflakeStatus(const playerid, bool: status = true)
 {
     if (!status)
     {
-        if (!__g_snowObjectCreated)
+        if (!__g_snowObjectCreated[playerid])
         {
             return 0;
         }
@@ -56,7 +56,7 @@ stock Winter_SetSnowflakeStatus(const playerid, bool: status = true)
         return 1;
     }
 
-    if (__g_snowObjectCreated)
+    if (__g_snowObjectCreated[playerid])
     {
         return 0;
     }
