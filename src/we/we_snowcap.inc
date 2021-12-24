@@ -17,7 +17,7 @@ static bool: snowCapStatus[MAX_PLAYERS];
 stock Winter_GetSnowCapStatus(const playerid) return snowCapStatus[playerid];
 stock Winter_SetSnowCapStatus(const playerid)
 {
-    new status = !Winter_GetSnowCapStatus(playerid);
+    new const status = !Winter_GetSnowCapStatus(playerid);
     
     if (!status)
     {

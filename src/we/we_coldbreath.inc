@@ -35,7 +35,7 @@ public __Winter_ColdBreathTimer(const playerid)
 stock Winter_GetColdBreathStatus(const playerid) return coldBreathStatus[playerid];
 stock Winter_SetColdBreathStatus(const playerid)
 {
-    new status = !Winter_GetColdBreathStatus(playerid);
+    new const status = !Winter_GetColdBreathStatus(playerid);
    
     if (!status)
     {
