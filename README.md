@@ -24,12 +24,12 @@ Include in your code and begin using the library:
 - Snowflakes
 ```c
 stock Winter_SetSnowflakeStatus(const playerid, bool: status = true)
-stock Winter_GetSnowflakeStatus(const playerid) return __g_snowFallingStatus[playerid];
+stock Winter_GetSnowflakeStatus(const playerid) return snowFallingStatus[playerid];
 
 // Example
 CMD:snowflakes(playerid, const string: params[])
 {
-    Winter_SetSnowflakeStatus(playerid, (Winter_GetSnowflakeStatus(playerid) ? (false) : (true)));
+    Winter_SetSnowflakeStatus(playerid, !Winter_GetSnowflakeStatus(playerid));
 
     return 1;
 }
@@ -38,12 +38,12 @@ CMD:snowflakes(playerid, const string: params[])
 - Snow objects (LOS SANTOS :c)
 ```c
 stock Winter_ShowSnowObjects(const playerid, bool: status = true)
-stock Winter_GetSnowObjStatus(const playerid) return __g_snowObjStatus[playerid];
+stock Winter_GetSnowObjStatus(const playerid) return snowObjStatus[playerid];
 
 // Example
 CMD:snowobjects(playerid, const string: params[])
 {
-    Winter_ShowSnowObjects(playerid, (Winter_GetSnowObjStatus(playerid) ? (false) : (true)));
+    Winter_ShowSnowObjects(playerid, !Winter_GetSnowObjStatus(playerid));
 
     return 1;
 }
@@ -52,12 +52,12 @@ CMD:snowobjects(playerid, const string: params[])
 - Winter cap
 ```c
 stock Winter_SetSnowCapStatus(const playerid, bool: status = true)
-stock Winter_GetSnowCapStatus(const playerid) return __g_snowCapStatus[playerid];
+stock Winter_GetSnowCapStatus(const playerid) return snowCapStatus[playerid];
 
 // Example
 CMD:cap(playerid, const string: params[])
 {
-    Winter_SetSnowCapStatus(playerid, (Winter_GetSnowCapStatus(playerid) ? (false) : (true)));
+    Winter_SetSnowCapStatus(playerid, !Winter_GetSnowCapStatus(playerid));
 
     return 1;
 }
@@ -66,12 +66,12 @@ CMD:cap(playerid, const string: params[])
 - Cold breath
 ```c
 stock Winter_SetColdBreathStatus(const playerid, bool: status = true)
-stock Winter_GetColdBreathStatus(const playerid) return __g_coldBreathStatus[playerid];
+stock Winter_GetColdBreathStatus(const playerid) return coldBreathStatus[playerid];
 
 // Example
 CMD:coldbreath(playerid, const string: params[])
 {
-    Winter_SetColdBreathStatus(playerid, (Winter_GetColdBreathStatus(playerid) ? (false) : (true)));
+    Winter_SetColdBreathStatus(playerid, !Winter_GetColdBreathStatus(playerid));
 
     return 1;
 }

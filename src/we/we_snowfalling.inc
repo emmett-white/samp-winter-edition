@@ -9,11 +9,10 @@
   * Variables
  */
 static
-    __g_snowObject[MAX_PLAYERS],
-    __g_snowFallingTimer[MAX_PLAYERS],
+    snowObject[MAX_PLAYERS],
+    snowFallingTimer[MAX_PLAYERS],
 
-    bool: __g_snowObjectCreated[MAX_PLAYERS],
-    bool: __g_snowFallingStatus[MAX_PLAYERS];
+    bool: snowFallingStatus[MAX_PLAYERS];
 
 /**
   * Callbacks
@@ -28,7 +27,7 @@ public __Winter_SnowFallingTimer(const playerid)
 			static x, y, z;
 	       	GetPlayerCameraPos(playerid, Float: x, Float: y, Float:z);
             
-	       	MovePlayerObject(playerid, __g_snowObject[playerid],
+	       	MovePlayerObject(playerid, snowObject[playerid],
                 Float: x, Float: y, (Float:z - 2.5), Float: 4000.0
             );
   	 	}
@@ -40,36 +39,28 @@ public __Winter_SnowFallingTimer(const playerid)
 /**
   * Functions
  */
-stock Winter_GetSnowflakeStatus(const playerid) return __g_snowFallingStatus[playerid];
-stock Winter_SetSnowflakeStatus(const playerid, bool: status = true)
+stock Winter_GetSnowflakeStatus(const playerid) return snowFallingStatus[playerid];
+stock Winter_SetSnowflakeStatus(const playerid)
 {
+    new const status = !Winter_GetSnowflakeStatus(playerid);
+
     if (!status)
     {
-        if (!__g_snowObjectCreated[playerid])
-        {
-            return 0;
-        }
-
-        __g_snowFallingStatus[playerid] = false;
-        DestroyPlayerObject(playerid, __g_snowObject[playerid]);
-        KillTimer(__g_snowFallingTimer[playerid]);
+        snowFallingStatus[playerid] = false;
+        DestroyPlayerObject(playerid, snowObject[playerid]);
+        KillTimer(snowFallingTimer[playerid]);
         return 1;
-    }
-
-    if (__g_snowObjectCreated[playerid])
-    {
-        return 0;
     }
 
     static x, y, z;
     GetPlayerCameraPos(playerid, Float: x, Float: z, Float: z);
 
-    __g_snowObject[playerid] = CreatePlayerObject(playerid, 18864,
+    snowObject[playerid] = CreatePlayerObject(playerid, 18864,
         (Float: x + random(25)), (Float: y + random(25)), (Float: z - 5), 0.0, 0.0, 0.0, 300.0
     );
 
-    __g_snowFallingTimer[playerid] = SetTimerEx("__Winter_SnowFallingTimer", 500, 1, "d", playerid);
-    __g_snowFallingStatus[playerid] = true;
+    snowFallingTimer[playerid] = SetTimerEx("__Winter_SnowFallingTimer", 500, 1, "d", playerid);
+    snowFallingStatus[playerid] = true;
 
     return 1;
 }

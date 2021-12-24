@@ -8,11 +8,11 @@
 /**
   * Variables
  */
-const WINTER_COLD_BREATH_OBJ_INDEX = 4;
+const WINTER_COLD_BREATH_OBJ_INDEX = 9;
 
 static
-    __g_coldBreathTimer[MAX_PLAYERS],
-    bool: __g_coldBreathStatus[MAX_PLAYERS];
+    coldBreathTimer[MAX_PLAYERS],
+    bool: coldBreathStatus[MAX_PLAYERS];
 
 /**
   * Callbacks
@@ -32,20 +32,22 @@ public __Winter_ColdBreathTimer(const playerid)
 /**
   * Functions
  */
-stock Winter_GetColdBreathStatus(const playerid) return __g_coldBreathStatus[playerid];
-stock Winter_SetColdBreathStatus(const playerid, bool: status = true)
+stock Winter_GetColdBreathStatus(const playerid) return coldBreathStatus[playerid];
+stock Winter_SetColdBreathStatus(const playerid)
 {
+    new status = !Winter_GetColdBreathStatus(playerid);
+   
     if (!status)
     {
         RemovePlayerAttachedObject(playerid, WINTER_COLD_BREATH_OBJ_INDEX);
-        __g_coldBreathStatus[playerid] = false;
+        coldBreathStatus[playerid] = false;
 
-        KillTimer(__g_coldBreathTimer[playerid]);
+        KillTimer(coldBreathTimer[playerid]);
         return 1;
     }
 
-    __g_coldBreathStatus[playerid] = true;
-    __g_coldBreathTimer[playerid] = SetTimerEx("__Winter_ColdBreathTimer", 2500, 1, "d", playerid);
+    coldBreathStatus[playerid] = true;
+    coldBreathTimer[playerid] = SetTimerEx("__Winter_ColdBreathTimer", 2500, 1, "d", playerid);
 
     return 1;
 }
